@@ -1,0 +1,16 @@
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        sign_values = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+        double_sign_values = {"IV": 4, "IX": 9, "XL": 40, "XC": 90, "CD": 400, "CM": 900}
+    
+        result = 0
+        for value in double_sign_values:
+            if value in s:
+                s = s.replace(value, "")
+                result += double_sign_values[value]
+
+        for char in s:
+            result += sign_values[char]
+
+        return result
+  
